@@ -7,7 +7,7 @@
 <body>
  <p><a href="/todo/add/">Добавить статью</a></p>
     {% for todo in ToDo_list %}
-        <p><b>ID:</b> {{ todo.pk }}. ({{ todo.status }})</p>
+        <p><b>ID:</b> {{ todo.pk }}. ({{ todo.get_status_display }})</p>
         <p><b>Задача:</b> <a href="/task?id={{ todo.pk }}">{{ todo.description }}</a></p>
         <div><b>Выполнить до:</b> {{ todo.date }}</div>
         <div><a href="/delete?id={{ todo.pk }}">Удалить запись</a></div>

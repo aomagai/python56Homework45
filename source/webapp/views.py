@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from webapp.models import ToDo, STATUS_CHOICES
 
 
@@ -21,10 +21,12 @@ def create_view(request):
         description = request.POST.get('description')
         todo = ToDo.objects.create( description=description, status=status, date=date)
         context = {'todo': todo}
-        return render(request, 'todo_view.html', context)
+        return redirect('/')
 
 def delete_item(request):
     ToDo.objects.get(pk=request.GET.get('id')).delete()
+    return redirect('/')
+
 
 def todo_view(request):
     todo=ToDo.objects.get(pk=request.GET.get('id'))
