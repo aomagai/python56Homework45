@@ -10,7 +10,6 @@
 
 <form action="/todo/add/" method="post">
     {% csrf_token %}
-
     <label for="id-status">Status:</label><br/>
     <select name="status" id="id-status">
         {% for value, label in status_choices %}
@@ -22,10 +21,6 @@
 
     <label>Dscription:</label><br/>
     <textarea name="description"></textarea><br/>
-
-
-
-
     <br/>
     <input type="submit" value="Send"/>
 </form>

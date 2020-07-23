@@ -5,12 +5,15 @@
     <title>Список задач</title>
 </head>
 <body>
+ <p><a href="/todo/add/">Добавить статью</a></p>
     {% for todo in ToDo_list %}
-        <h3>{{ todo.pk }}. {{ todo.status }}</h3>
-        <p>Описание: ({{ todo.description }})</p>
-        <div>{{ todo.date }}</div>
+        <p><b>ID:</b> {{ todo.pk }}. ({{ todo.status }})</p>
+        <p><b>Задача:</b> <a href="/task?id={{ todo.pk }}">{{ todo.description }}</a></p>
+        <div><b>Выполнить до:</b> {{ todo.date }}</div>
+        <div><a href="/delete?id={{ todo.pk }}">Удалить запись</a></div>
+        <hr>
     {% endfor %}
-    <p><a href="/todo/add/">Добавить статью</a></p>
+
 
 </body>
 </html>
