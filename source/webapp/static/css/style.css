@@ -1,0 +1,13 @@
+ body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #444444;
+    background-color: #b6ffe6;
+}
+
+.container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+}
