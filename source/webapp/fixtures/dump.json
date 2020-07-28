@@ -1,20 +1,12 @@
 [
 {
   "model": "webapp.todo",
-  "pk": 3,
-  "fields": {
-    "description": "\u041f\u043e\u043c\u044b\u0442\u044c \u043a\u043e\u0442\u0430",
-    "status": "new",
-    "date": null
-  }
-},
-{
-  "model": "webapp.todo",
   "pk": 4,
   "fields": {
     "description": "\u041f\u043e\u043c\u044b\u0442\u044c \u0441\u043e\u0431\u0430\u043a\u0443",
     "status": "new",
-    "date": "2020-07-24"
+    "date": "2020-07-24",
+    "detailed_description": null
   }
 },
 {
@@ -23,7 +15,8 @@
   "fields": {
     "description": "\u043f\u043e\u043c\u044b\u0442\u044c \u043a\u043e\u0440\u043e\u0432\u043a\u0443",
     "status": "new",
-    "date": "2020-07-09"
+    "date": "2020-07-09",
+    "detailed_description": null
   }
 },
 {
@@ -32,7 +25,18 @@
   "fields": {
     "description": "\u043f\u043e\u043c\u044b\u0442\u044c\u0441\u044f \u0441\u0430\u043c\u043e\u043c\u0443",
     "status": "new",
-    "date": "2020-07-24"
+    "date": "2020-07-24",
+    "detailed_description": null
+  }
+},
+{
+  "model": "webapp.todo",
+  "pk": 25,
+  "fields": {
+    "description": "\u041f\u043e\u043c\u044b\u0442\u044c \u043d\u043e\u0433\u0438",
+    "status": "new",
+    "date": "2020-07-09",
+    "detailed_description": null
   }
 },
 {
