@@ -29,10 +29,7 @@ def delete_item(request):
 
 
 def todo_view(request):
-    todo=ToDo.objects.get(pk=request.GET.get('id'))
-    context = {
-        'status': todo.status,
-        'description': todo.description,
-        'date': todo.date
-    }
-    return render(request, 'view.html', context)
+    todo_id=request.GET.get('pk')
+    todo = ToDo.objects.get(pk=todo_id)
+    context = {'todo': todo}
+    return render(request, 'todo_view.html', context)
