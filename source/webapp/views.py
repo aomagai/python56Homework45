@@ -22,7 +22,7 @@ def create_view(request):
             date = None
         description = request.POST.get('description')
         todo = ToDo.objects.create(description=description, status=status, date=date, detailed_description=detailed_description)
-        return redirect(f'/task/?pk={todo.pk}')
+        return redirect(f'/task/{todo.pk}/')
     else:
         HttpResponseNotAllowed(permitted_methods=['GET', 'POST'])
 
@@ -31,10 +31,7 @@ def delete_item(request):
     return redirect('/')
 
 
-def todo_view(request):
-    todo_id=request.GET.get('pk')
-
-    todo = get_object_or_404(ToDo, pk=todo_id)
-
+def todo_view(request, pk):
+    todo = get_object_or_404(ToDo, pk=pk)
     context = {'todo': todo}
     return render(request, 'todo_view.html', context)
