@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from webapp.models import ToDo, STATUS_CHOICES
 from django.http import HttpResponseNotAllowed
 
@@ -33,6 +33,8 @@ def delete_item(request):
 
 def todo_view(request):
     todo_id=request.GET.get('pk')
-    todo = ToDo.objects.get(pk=todo_id)
+
+    todo = get_object_or_404(ToDo, pk=todo_id)
+
     context = {'todo': todo}
     return render(request, 'todo_view.html', context)
