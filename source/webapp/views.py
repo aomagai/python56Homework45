@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from webapp.models import ToDo, STATUS_CHOICES
-
+from django.http import HttpResponseNotAllowed, HttpResponse
 
 def index_view(request):
     data = ToDo.objects.all()
@@ -21,7 +21,11 @@ def create_view(request):
         description = request.POST.get('description')
         todo = ToDo.objects.create( description=description, status=status, date=date)
         context = {'todo': todo}
-        return redirect('/')
+        # return redirect('/')
+        response = HttpResponse()
+        response.status_code = 302
+        response['Location'] = f'/task/?pk={todo.pk}'
+        return response
 
 def delete_item(request):
     ToDo.objects.get(pk=request.GET.get('id')).delete()
