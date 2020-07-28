@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from webapp.models import ToDo, STATUS_CHOICES
-from django.http import HttpResponseNotAllowed, HttpResponseRedirect
+from django.http import HttpResponseNotAllowed
 
 def index_view(request):
     data = ToDo.objects.all()
@@ -20,8 +20,7 @@ def create_view(request):
             date = None
         description = request.POST.get('description')
         todo = ToDo.objects.create( description=description, status=status, date=date)
-        redirect_url = f'/task/?pk={todo.pk}'
-        return HttpResponseRedirect(redirect_url)
+        return redirect(f'/task/?pk={todo.pk}')
     else:
         HttpResponseNotAllowed(permitted_methods=['GET', 'POST'])
 
