@@ -10,10 +10,10 @@
     <title>Create</title>
 </head>
 <body>
-<a href="/">На главную</a>
+<a href="{% url 'index' %}">На главную</a>
 <h1>Create ToDo</h1>
 
-<form action="/todo/add/" method="post">
+<form action="{% url 'create_view' %}" method="post">
     {% csrf_token %}
     <label for="id-status">Status:</label><br/>
     <select name="status" id="id-status">

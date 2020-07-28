@@ -14,6 +14,6 @@
     <p>Description: {{ todo.description|linebreaks }}</p>
     <p>Detail description: {{ todo.detailed_description|linebreaks }}</p>
     <p>Date: {{ todo.date }}</p>
-    <p><a href="/">На главную</a></p>
+    <p><a href="{% url 'index' %}">На главную</a></p>
 </body>
 </html>

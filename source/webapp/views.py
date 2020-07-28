@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from webapp.models import ToDo, STATUS_CHOICES
 from django.http import HttpResponseNotAllowed
+from django.urls import reverse
+
+
 
 def index_view(request):
     data = ToDo.objects.all()
@@ -22,12 +25,12 @@ def create_view(request):
             date = None
         description = request.POST.get('description')
         todo = ToDo.objects.create(description=description, status=status, date=date, detailed_description=detailed_description)
-        return redirect(f'/task/{todo.pk}/')
+        return redirect('todo_view', pk=todo.pk)
     else:
         HttpResponseNotAllowed(permitted_methods=['GET', 'POST'])
 
-def delete_item(request):
-    ToDo.objects.get(pk=request.GET.get('id')).delete()
+def delete_item(request, pk):
+    ToDo.objects.get(pk=pk).delete()
     return redirect('/')
 
 

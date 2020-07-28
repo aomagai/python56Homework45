@@ -19,8 +19,8 @@ from webapp.views import index_view, create_view, todo_view, delete_item
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index_view),
-    path('todo/add/', create_view),
-    path('task/<int:pk>/', todo_view),
-    path('delete/', delete_item),
+    path('', index_view, name='index'),
+    path('todo/add/', create_view, name='create_view'),
+    path('task/<int:pk>/', todo_view, name='todo_view'),
+    path('delete/<int:pk>/', delete_item, name='delete_item'),
 ]
