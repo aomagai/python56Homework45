@@ -16,10 +16,12 @@ def create_view(request):
     elif request.method == 'POST':
         status = request.POST.get('status')
         date = request.POST.get('date')
+        detailed_description = request.POST.get('detailed_description')
+
         if date == '':
             date = None
         description = request.POST.get('description')
-        todo = ToDo.objects.create( description=description, status=status, date=date)
+        todo = ToDo.objects.create(description=description, status=status, date=date, detailed_description=detailed_description)
         return redirect(f'/task/?pk={todo.pk}')
     else:
         HttpResponseNotAllowed(permitted_methods=['GET', 'POST'])
