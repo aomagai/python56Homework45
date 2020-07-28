@@ -10,10 +10,17 @@
     <title>View</title>
 </head>
 <body>
-    <p>Status: {{ todo.status }}</p>
-    <p>Description: {{ todo.description|linebreaks }}</p>
-    <p>Detail description: {{ todo.detailed_description|linebreaks }}</p>
-    <p>Date: {{ todo.date }}</p>
-    <p><a href="{% url 'index' %}">На главную</a></p>
+<nav class="navbar">
+   <div class="container">
+       <ul class="menu">
+           <li><a href="{% url 'index' %}">На главную</a></li>
+           <li><a href="{% url 'create_view' %}">Add Article</a></li>
+       </ul>
+   </div>
+</nav>
+    <p><b>Status:</b> {{ todo.status }}</p>
+    <p><b>Description:</b> {{ todo.description|linebreaks }}</p>
+    <p><b>Detail description:</b> {{ todo.detailed_description|linebreaks }}</p>
+    <p><b>Date:</b> {{ todo.date }}</p>
 </body>
 </html>

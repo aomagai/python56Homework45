@@ -9,8 +9,15 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Create</title>
 </head>
-<body>
-<a href="{% url 'index' %}">На главную</a>
+<div>
+<nav class="navbar">
+   <div class="container">
+       <ul class="menu">
+           <li><a href="{% url 'index' %}">На главную</a></li>
+       </ul>
+   </div>
+</nav>
+<div class="menu"></div>
 <h1>Create ToDo</h1>
 
 <form action="{% url 'create_view' %}" method="post">
@@ -32,6 +39,6 @@
     <br/>
     <input type="submit" value="Send"/>
 </form>
-
+</div>
 </body>
 </html>
