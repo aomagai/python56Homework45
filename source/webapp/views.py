@@ -38,3 +38,21 @@ def todo_view(request, pk):
     todo = get_object_or_404(ToDo, pk=pk)
     context = {'todo': todo}
     return render(request, 'todo_view.html', context)
+
+def todo_update_view(request, pk):
+    todo = get_object_or_404(ToDo, pk=pk)
+
+    if request.method == "GET":
+        return render(request, 'todo_update.html', context={
+            'status_choices': STATUS_CHOICES,
+            'todo': todo
+        })
+    elif request.method == 'POST':
+        todo.status = request.POST.get('status')
+        todo.detailed_description = request.POST.get('detailed_description')
+        todo.description = request.POST.get('description')
+        todo.save()
+        return redirect('todo_view', pk=todo.pk)
+    else:
+        HttpResponseNotAllowed(permitted_methods=['GET', 'POST'])
+

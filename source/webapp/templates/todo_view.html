@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}View{% endblock %}
+{% block menu %}
+    <li><a href="{% url 'todo_update' todo.pk %}">Обновить</a></li>
+{% endblock %}
 {% block content %}
-    <p><b>Status:</b> {{ todo.status }}</p>
+    <p><b>Status:</b> {{ todo.get_status_display }}</p>
     <p><b>Description:</b> {{ todo.description|linebreaks }}</p>
     <p><b>Detail description:</b> {{ todo.detailed_description|linebreaks }}</p>
     <p><b>Date:</b> {{ todo.date }}</p>
