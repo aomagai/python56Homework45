@@ -5,20 +5,23 @@
 <h1>Create ToDo</h1>
 <form action="{% url 'create_view' %}" method="post">
     {% csrf_token %}
-    <label for="id-status">Status:</label><br/>
-    <select name="status" id="id-status">
-        {% for value, label in status_choices %}
-            <option value="{{ value }}">{{ label }}</option>
-        {% endfor %}
-   </select><br/>
-    <label>Date:</label><br/>
-    <input type="text" name="date"/><br/>
 
-    <label>Dscription:</label><br/>
-    <textarea name="description"></textarea><br/>
-    <br/>
-   <label>Detailed description:</label><br/>
-    <textarea name="detailed_description"></textarea><br/>
+    <label for="{{ form.status.id_for_label }}">{{ form.status.label }}:</label><br/>
+ {{ form.status }}
+    <br>
+
+
+    <label for="{{ form.date.id_for_label }}">{{ form.date.label }}:</label><br/>
+    {{ form.date }}
+<br>
+
+    <label for="{{ form.description.id_for_label }}">{{ form.description.label }}:</label><br>
+    {{ form.description }}
+<br>
+
+
+   <label for="{{ form.detailed_description.id_for_label }}">{{ form.detailed_description.label }}</label><br/>
+    {{ form.detailed_description }}
     <br/>
     <input type="submit" value="Send"/>
 </form>
