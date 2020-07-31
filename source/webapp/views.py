@@ -35,7 +35,12 @@ def create_view(request):
         HttpResponseNotAllowed(permitted_methods=['GET', 'POST'])
 
 def delete_item(request, pk):
-    ToDo.objects.get(pk=pk).delete()
+    todo = get_object_or_404(ToDo, pk=pk)
+    if request.method == 'GET':
+        return render(request, 'delete.html', context={'todo': todo})
+    elif request.method == 'POST':
+        todo.delete()
+        return redirect('index')
     return redirect('/')
 
 
@@ -45,13 +50,13 @@ def todo_view(request, pk):
     return render(request, 'todo_view.html', context)
 
 def todo_update_view(request, pk):
-
     todo = get_object_or_404(ToDo, pk=pk)
-
+    form = TodoForms(initial={'status': todo.status, 'description': todo.description, 'detailed_description': todo.detailed_description})
     if request.method == "GET":
         return render(request, 'todo_update.html', context={
             'status_choices': STATUS_CHOICES,
-            'todo': todo
+            'todo': todo,
+            'form': form
         })
     elif request.method == 'POST':
         todo.status = request.POST.get('status')

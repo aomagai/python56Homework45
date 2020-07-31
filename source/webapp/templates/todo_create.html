@@ -6,23 +6,30 @@
 <form action="{% url 'create_view' %}" method="post">
     {% csrf_token %}
 
-    <label for="{{ form.status.id_for_label }}">{{ form.status.label }}:</label><br/>
- {{ form.status }}
-    <br>
+    {% include 'partial/form_field.html' with field=form.status %}<br>
+    {% include 'partial/form_field.html' with field=form.date %}<br>
+    {% include 'partial/form_field.html' with field=form.description %}<br>
+    {% include 'partial/form_field.html' with field=form.detailed_description %}<br>
 
-
-    <label for="{{ form.date.id_for_label }}">{{ form.date.label }}:</label><br/>
-    {{ form.date }}
-<br>
-
-    <label for="{{ form.description.id_for_label }}">{{ form.description.label }}:</label><br>
-    {{ form.description }}
-<br>
-
-
-   <label for="{{ form.detailed_description.id_for_label }}">{{ form.detailed_description.label }}</label><br/>
-    {{ form.detailed_description }}
-    <br/>
+{##}
+{##}
+{#    <label for="{{ form.status.id_for_label }}">{{ form.status.label }}:</label><br/>#}
+{# {{ form.status }}#}
+{#    <br>#}
+{##}
+{##}
+{#    <label for="{{ form.date.id_for_label }}">{{ form.date.label }}:</label><br/>#}
+{#    {{ form.date }}#}
+{#<br>#}
+{##}
+{#    <label for="{{ form.description.id_for_label }}">{{ form.description.label }}:</label><br>#}
+{#    {{ form.description }}#}
+{#<br>#}
+{##}
+{##}
+{#   <label for="{{ form.detailed_description.id_for_label }}">{{ form.detailed_description.label }}</label><br/>#}
+{#    {{ form.detailed_description }}#}
+{#    <br/>#}
     <input type="submit" value="Send"/>
 </form>
 {% endblock %}

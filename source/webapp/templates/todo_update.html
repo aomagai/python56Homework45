@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Update{% endblock %}
+{% block menu %}
+    <li><a href="{% url 'todo_view' todo.pk %}">Отмена</a> </li>
+{% endblock %}
+{% block content %}
+<h1>Update ToDo</h1>
+<form action="{% url 'todo_update' todo.pk %}" method="post">
+    {% csrf_token %}
+    {% include 'partial/form_field_update.html' with field=form.status %}<br>
+    {% include 'partial/form_field_update.html' with field=form.description %}<br>
+    {% include 'partial/form_field_update.html' with field=form.detailed_description %}<br>
+    <input type="submit" value="Send"/>
+</form>
+{% endblock %}
